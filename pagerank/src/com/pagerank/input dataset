@@ -1,0 +1,84 @@
+input dataset
+==============
+
+
+A	B C
+B	C
+C	A
+
+
+================
+output
+===============
+A       PAGERANK:0.9
+B       PAGERANK:0.475
+C       PAGERANK:1.325
+
+======================
+
+# Create the content for the PageRank explanation and calculations in a text format
+page_rank_content = """
+PageRank Algorithm - Step-by-Step Explanation
+
+Input Dataset:
+---------------------
+Edges:
+- A → B
+- B → C
+- C → A
+
+This represents the following directed graph:
+- A has a link to B.
+- B has a link to C.
+- C has a link to A.
+
+PageRank Formula:
+-------------------------
+PR(A) = (1 - d) + d * (sum of PR(i) / L(i) for all nodes i that link to A)
+Where:
+- PR(A) is the PageRank of node A.
+- d is the damping factor (usually set to 0.85).
+- In(A) is the set of nodes that link to A.
+- L(i) is the number of links from node i.
+
+Initial PageRank:
+---------------------
+We start by initializing each node's PageRank to 1:
+- PR(A) = 1
+- PR(B) = 1
+- PR(C) = 1
+
+Damping Factor:
+-------------------
+We use the damping factor d = 0.85.
+
+PageRank Iterations:
+----------------------
+1st Iteration:
+
+PR(A) = 0.15 + 0.85 * PR(C)
+PR(B) = 0.15 + 0.85 * PR(A)
+PR(C) = 0.15 + 0.85 * PR(B)
+
+With initial values (1 for each node):
+PR(A) = 0.15 + 0.85 * 1 = 1.0
+PR(B) = 0.15 + 0.85 * 1 = 1.0
+PR(C) = 0.15 + 0.85 * 1 = 1.0
+
+2nd Iteration:
+-------------
+Using the updated values from the first iteration, we repeat the formula for each node.
+
+Subsequent Iterations:
+-----------------------
+We continue this process until the PageRank values converge, meaning the values stabilize and further iterations do not significantly change the ranks.
+
+Final Result (after convergence):
+-----------------------------------
+- PR(A) ≈ 0.9
+- PR(B) ≈ 0.475
+- PR(C) ≈ 1.325
+
+
+
+
